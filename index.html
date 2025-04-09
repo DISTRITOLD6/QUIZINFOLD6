@@ -3,197 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz de Informática, TI, Canva e IA</title>
+  <title>Quiz Lions Clube</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-    }
-    header, .start-screen, .quiz-screen {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
+      background-color: #002868;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
     header {
-      background-color: #00205B;
-      color: #FDB813;
       text-align: center;
-      padding: 20px 0;
+      padding: 30px 20px 20px;
     }
-    .start-screen {
-      text-align: center;
-      margin-top: 40px;
+    header h1 {
+      margin: 10px 0 5px;
+      color: #FFD700;
     }
-    .start-screen input {
+    header h3 {
+      margin: 0;
+      font-weight: normal;
+    }
+    #authForm, #quiz {
+      background: white;
+      color: #000;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      margin-bottom: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
       padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
+      margin-top: 5px;
       border: 1px solid #ccc;
-      width: 80%;
-      max-width: 300px;
+      border-radius: 5px;
     }
-    .start-screen button {
-      padding: 10px 20px;
-      background: #FDB813;
-      color: #00205B;
+    button {
+      margin-top: 20px;
+      background-color: #FFD700;
+      color: #002868;
       border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
     }
-    .start-screen button:hover {
-      background: #e0a400;
+    button:hover {
+      background-color: #e6c200;
     }
-    .quiz-screen {
+    #quiz {
       display: none;
     }
     .question {
-      background: #fff;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .question h3 {
-      margin: 0 0 10px;
-    }
-    .question label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    .quiz-screen button {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #00205B;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .quiz-screen button:hover {
-      background: #011840;
-    }
-    .result {
-      text-align: center;
-      font-size: 20px;
       margin-top: 20px;
-      font-weight: bold;
-    }
-    .highlight {
-      background-color: #c8e6c9;
-    }
-    .wrong {
-      background-color: #ffcdd2;
-    }
-    footer {
-      text-align: center;
-      margin: 30px 0;
-      color: #777;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Quiz de Informática, TI, Canva e Inteligência Artificial</h1>
+    <h1>Quiz Lions Clube</h1>
+    <h3>Autor: CL Fábio Neves - Distrito LD-6</h3>
   </header>
-  <div class="start-screen" id="startScreen">
-    <h2>Bem-vindo(a)!</h2>
-    <p>Preencha seu nome e email para começar:</p>
-    <input type="text" id="userName" placeholder="Seu nome" required><br>
-    <input type="email" id="userEmail" placeholder="Seu email" required><br>
-    <button onclick="startQuiz()">Iniciar Quiz</button>
+
+  <div id="authForm">
+    <form id="authFormContent">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <button type="submit">Iniciar o Quiz</button>
+    </form>
   </div>
 
-  <div class="quiz-screen" id="quizScreen">
-    <form id="quizForm"></form>
-    <button onclick="checkAnswers()">Ver Resultado</button>
-    <div class="result" id="result"></div>
+  <div id="quiz">
+    <h2>Bem-vindo ao Quiz!</h2>
+    <form id="quizForm">
+      <!-- Perguntas serão inseridas aqui -->
+    </form>
   </div>
-
-  <footer>
-    Desenvolvido por CL Fábio Neves
-  </footer>
 
   <script>
-    const questions = [
-      {
-        q: "O que significa a sigla 'TI'?",
-        options: ["Tecnologia da Informação", "Técnico de Internet", "Transmissão Instantânea", "Tratamento de Imagem"],
-        answer: 0
-      },
-      {
-        q: "Qual ferramenta online é usada para criação de designs gráficos e apresentações de forma simples?",
-        options: ["Photoshop", "CorelDRAW", "Canva", "Illustrator"],
-        answer: 2
-      },
-      {
-        q: "O que é inteligência artificial?",
-        options: ["Um robô físico", "Uma linguagem de programação", "Tecnologia que simula a inteligência humana", "Um tipo de computador"],
-        answer: 2
-      },
-      {
-        q: "Qual dos itens a seguir é um exemplo de assistente virtual com IA?",
-        options: ["Windows", "Google Chrome", "Alexa", "Photoshop"],
-        answer: 2
-      },
-      {
-        q: "Qual linguagem de marcação é usada para estruturar páginas web?",
-        options: ["HTML", "CSS", "JavaScript", "Python"],
-        answer: 0
-      }
+    const perguntas = [
+      { q: "O que significa a sigla CPU?", o: ["Central de Processamento Único", "Central de Programação Universal", "Unidade Central de Processamento", "Unidade de Controle e Processamento"] },
+      { q: "Qual a função principal do sistema operacional?", o: ["Rodar jogos", "Gerenciar o hardware e software do computador", "Controlar a internet", "Fazer backup automático"] },
+      { q: "Qual desses dispositivos é considerado uma saída de dados?", o: ["Teclado", "Mouse", "Impressora", "Scanner"] },
+      { q: "O que é um software?", o: ["Parte física do computador", "Código fonte da internet", "Conjunto de instruções que o computador pode executar", "Hardware específico de um sistema"] },
+      { q: "Qual é o atalho para copiar um texto?", o: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + Z"] },
+      { q: "O que significa HD em um computador?", o: ["Hardware Digital", "Hard Disk (Disco Rígido)", "High Definition", "Home Device"] },
+      { q: "Qual extensão é típica de arquivos do Word?", o: [".xls", ".ppt", ".docx", ".pdf"] },
+      { q: "Qual navegador é desenvolvido pela Google?", o: ["Firefox", "Edge", "Safari", "Chrome"] },
+      { q: "Qual dessas opções NÃO é um sistema operacional?", o: ["Linux", "Windows", "Android", "Excel"] },
+      { q: "O que é backup?", o: ["Exclusão de arquivos", "Instalação de programas", "Cópia de segurança de dados", "Reinicialização do sistema"] },
+      { q: "O que é um firewall?", o: ["Um tipo de vírus", "Um software que aumenta a velocidade da internet", "Um sistema de segurança de rede", "Um formato de arquivo"] },
+      { q: "Qual é a principal função de um servidor?", o: ["Jogar online", "Armazenar e fornecer dados a outros computadores", "Imprimir documentos", "Navegar na web"] },
+      { q: "O que é nuvem (cloud computing)?", o: ["Armazenamento físico", "Processamento local de dados", "Armazenamento e acesso a dados via internet", "Backup em HD externo"] },
+      { q: "O que é um banco de dados?", o: ["Um software de edição de vídeo", "Um tipo de firewall", "Um conjunto organizado de informações", "Um hardware de conexão"] },
+      { q: "O que é um IP?", o: ["Um programa de internet", "Um endereço exclusivo de identificação de um dispositivo na rede", "Um antivírus", "Um plug USB"] },
+      { q: "O que é o Canva?", o: ["Um antivírus", "Um programa de planilhas", "Uma plataforma de design gráfico online", "Um sistema de edição de vídeo"] },
+      { q: "Qual dessas funcionalidades o Canva oferece?", o: ["Programação em Java", "Criação de gráficos, posts e apresentações", "Controle de estoque", "Digitalização de documentos"] },
+      { q: "É possível trabalhar em equipe no Canva?", o: ["Não", "Sim, em tempo real", "Somente com conta paga", "Apenas offline"] },
+      { q: "Qual desses formatos pode ser exportado no Canva?", o: [".zip", ".avi", ".jpg", ".exe"] },
+      { q: "O Canva possui banco de imagens e elementos?", o: ["Não, é só para editar texto", "Sim, com opções gratuitas e pagas", "Apenas imagens pagas", "Somente com plano Pro"] },
+      { q: "O que é Inteligência Artificial?", o: ["Um sistema de senhas", "A capacidade de máquinas simular comportamentos humanos", "Um software para jogos", "Um antivírus"] },
+      { q: "Qual destas é uma aplicação comum da IA?", o: ["Impressora 3D", "Planilha de Excel", "Assistentes virtuais (como Alexa ou Siri)", "Scanner de fotos"] },
+      { q: "O ChatGPT é um exemplo de:", o: ["Sistema operacional", "Processador de vídeo", "Inteligência Artificial de linguagem natural", "Aplicativo de música"] },
+      { q: "A IA precisa ser treinada com:", o: ["Hardware físico", "Dados", "Filtros de internet", "Códigos de barra"] },
+      { q: "A inteligência artificial pode aprender com o tempo?", o: ["Não, ela é fixa", "Sim, através de machine learning (aprendizado de máquina)", "Apenas com comandos manuais", "Somente se conectada ao Wi-Fi"] },
     ];
 
-    const form = document.getElementById('quizForm');
-    questions.forEach((q, i) => {
-      const div = document.createElement('div');
-      div.className = 'question';
-      div.id = `question${i}`;
-      div.innerHTML = `<h3>${i + 1}. ${q.q}</h3>` +
-        q.options.map((opt, idx) => `
-          <label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label>
-        `).join('');
-      form.appendChild(div);
-    });
-
-    function startQuiz() {
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      if (name && email) {
-        document.getElementById('startScreen').style.display = 'none';
-        document.getElementById('quizScreen').style.display = 'block';
-      } else {
-        alert("Por favor, preencha seu nome e email para continuar.");
-      }
+    function renderizarPerguntas() {
+      const quizForm = document.getElementById("quizForm");
+      perguntas.forEach((pergunta, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        const html = `
+          <p><strong>${index + 1}. ${pergunta.q}</strong></p>
+          ${pergunta.o.map((opcao, i) => `
+            <label><input type="radio" name="q${index}" value="${opcao}" required> ${opcao}</label>
+          `).join("<br>")}
+        `;
+        div.innerHTML = html;
+        quizForm.appendChild(div);
+      });
+      const submitBtn = document.createElement("button");
+      submitBtn.textContent = "Finalizar Quiz";
+      quizForm.appendChild(submitBtn);
     }
 
-    function checkAnswers() {
-      let score = 0;
-      questions.forEach((q, i) => {
-        const div = document.getElementById(`question${i}`);
-        const inputs = div.querySelectorAll('input');
-        inputs.forEach(input => input.parentElement.classList.remove('highlight', 'wrong'));
+    document.addEventListener('DOMContentLoaded', () => {
+      const authFormContent = document.getElementById('authFormContent');
+      const authForm = document.getElementById('authForm');
+      const quiz = document.getElementById('quiz');
 
-        const selected = document.querySelector(`input[name=q${i}]:checked`);
-        if (selected) {
-          const selectedValue = parseInt(selected.value);
-          if (selectedValue === q.answer) {
-            score++;
-            selected.parentElement.classList.add('highlight');
-          } else {
-            selected.parentElement.classList.add('wrong');
-            const correct = inputs[q.answer];
-            correct.parentElement.classList.add('highlight');
-          }
+      authFormContent.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        if (nome && email) {
+          authForm.style.display = 'none';
+          quiz.style.display = 'block';
+          renderizarPerguntas();
         } else {
-          const correct = inputs[q.answer];
-          correct.parentElement.classList.add('highlight');
+          alert('Por favor, preencha todos os campos.');
         }
       });
-      document.getElementById('result').textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
-    }
+    });
   </script>
 </body>
 </html>
