@@ -98,31 +98,31 @@
 
   <script>
     const perguntas = [
-      { q: "O que significa a sigla CPU?", o: ["Central de Processamento Único", "Central de Programação Universal", "Unidade Central de Processamento", "Unidade de Controle e Processamento"] },
-      { q: "Qual a função principal do sistema operacional?", o: ["Rodar jogos", "Gerenciar o hardware e software do computador", "Controlar a internet", "Fazer backup automático"] },
-      { q: "Qual desses dispositivos é considerado uma saída de dados?", o: ["Teclado", "Mouse", "Impressora", "Scanner"] },
-      { q: "O que é um software?", o: ["Parte física do computador", "Código fonte da internet", "Conjunto de instruções que o computador pode executar", "Hardware específico de um sistema"] },
-      { q: "Qual é o atalho para copiar um texto?", o: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + Z"] },
-      { q: "O que significa HD em um computador?", o: ["Hardware Digital", "Hard Disk (Disco Rígido)", "High Definition", "Home Device"] },
-      { q: "Qual extensão é típica de arquivos do Word?", o: [".xls", ".ppt", ".docx", ".pdf"] },
-      { q: "Qual navegador é desenvolvido pela Google?", o: ["Firefox", "Edge", "Safari", "Chrome"] },
-      { q: "Qual dessas opções NÃO é um sistema operacional?", o: ["Linux", "Windows", "Android", "Excel"] },
-      { q: "O que é backup?", o: ["Exclusão de arquivos", "Instalação de programas", "Cópia de segurança de dados", "Reinicialização do sistema"] },
-      { q: "O que é um firewall?", o: ["Um tipo de vírus", "Um software que aumenta a velocidade da internet", "Um sistema de segurança de rede", "Um formato de arquivo"] },
-      { q: "Qual é a principal função de um servidor?", o: ["Jogar online", "Armazenar e fornecer dados a outros computadores", "Imprimir documentos", "Navegar na web"] },
-      { q: "O que é nuvem (cloud computing)?", o: ["Armazenamento físico", "Processamento local de dados", "Armazenamento e acesso a dados via internet", "Backup em HD externo"] },
-      { q: "O que é um banco de dados?", o: ["Um software de edição de vídeo", "Um tipo de firewall", "Um conjunto organizado de informações", "Um hardware de conexão"] },
-      { q: "O que é um IP?", o: ["Um programa de internet", "Um endereço exclusivo de identificação de um dispositivo na rede", "Um antivírus", "Um plug USB"] },
-      { q: "O que é o Canva?", o: ["Um antivírus", "Um programa de planilhas", "Uma plataforma de design gráfico online", "Um sistema de edição de vídeo"] },
-      { q: "Qual dessas funcionalidades o Canva oferece?", o: ["Programação em Java", "Criação de gráficos, posts e apresentações", "Controle de estoque", "Digitalização de documentos"] },
-      { q: "É possível trabalhar em equipe no Canva?", o: ["Não", "Sim, em tempo real", "Somente com conta paga", "Apenas offline"] },
-      { q: "Qual desses formatos pode ser exportado no Canva?", o: [".zip", ".avi", ".jpg", ".exe"] },
-      { q: "O Canva possui banco de imagens e elementos?", o: ["Não, é só para editar texto", "Sim, com opções gratuitas e pagas", "Apenas imagens pagas", "Somente com plano Pro"] },
-      { q: "O que é Inteligência Artificial?", o: ["Um sistema de senhas", "A capacidade de máquinas simular comportamentos humanos", "Um software para jogos", "Um antivírus"] },
-      { q: "Qual destas é uma aplicação comum da IA?", o: ["Impressora 3D", "Planilha de Excel", "Assistentes virtuais (como Alexa ou Siri)", "Scanner de fotos"] },
-      { q: "O ChatGPT é um exemplo de:", o: ["Sistema operacional", "Processador de vídeo", "Inteligência Artificial de linguagem natural", "Aplicativo de música"] },
-      { q: "A IA precisa ser treinada com:", o: ["Hardware físico", "Dados", "Filtros de internet", "Códigos de barra"] },
-      { q: "A inteligência artificial pode aprender com o tempo?", o: ["Não, ela é fixa", "Sim, através de machine learning (aprendizado de máquina)", "Apenas com comandos manuais", "Somente se conectada ao Wi-Fi"] },
+      { q: "O que significa a sigla CPU?", o: ["Central de Processamento Único", "Central de Programação Universal", "Unidade Central de Processamento", "Unidade de Controle e Processamento"], c: "Unidade Central de Processamento" },
+      { q: "Qual a função principal do sistema operacional?", o: ["Rodar jogos", "Gerenciar o hardware e software do computador", "Controlar a internet", "Fazer backup automático"], c: "Gerenciar o hardware e software do computador" },
+      { q: "Qual desses dispositivos é considerado uma saída de dados?", o: ["Teclado", "Mouse", "Impressora", "Scanner"], c: "Impressora" },
+      { q: "O que é um software?", o: ["Parte física do computador", "Código fonte da internet", "Conjunto de instruções que o computador pode executar", "Hardware específico de um sistema"], c: "Conjunto de instruções que o computador pode executar" },
+      { q: "Qual é o atalho para copiar um texto?", o: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + Z"], c: "Ctrl + C" },
+      { q: "O que significa HD em um computador?", o: ["Hardware Digital", "Hard Disk (Disco Rígido)", "High Definition", "Home Device"], c: "Hard Disk (Disco Rígido)" },
+      { q: "Qual extensão é típica de arquivos do Word?", o: [".xls", ".ppt", ".docx", ".pdf"], c: ".docx" },
+      { q: "Qual navegador é desenvolvido pela Google?", o: ["Firefox", "Edge", "Safari", "Chrome"], c: "Chrome" },
+      { q: "Qual dessas opções NÃO é um sistema operacional?", o: ["Linux", "Windows", "Android", "Excel"], c: "Excel" },
+      { q: "O que é backup?", o: ["Exclusão de arquivos", "Instalação de programas", "Cópia de segurança de dados", "Reinicialização do sistema"], c: "Cópia de segurança de dados" },
+      { q: "O que é um firewall?", o: ["Um tipo de vírus", "Um software que aumenta a velocidade da internet", "Um sistema de segurança de rede", "Um formato de arquivo"], c: "Um sistema de segurança de rede" },
+      { q: "Qual é a principal função de um servidor?", o: ["Jogar online", "Armazenar e fornecer dados a outros computadores", "Imprimir documentos", "Navegar na web"], c: "Armazenar e fornecer dados a outros computadores" },
+      { q: "O que é nuvem (cloud computing)?", o: ["Armazenamento físico", "Processamento local de dados", "Armazenamento e acesso a dados via internet", "Backup em HD externo"], c: "Armazenamento e acesso a dados via internet" },
+      { q: "O que é um banco de dados?", o: ["Um software de edição de vídeo", "Um tipo de firewall", "Um conjunto organizado de informações", "Um hardware de conexão"], c: "Um conjunto organizado de informações" },
+      { q: "O que é um IP?", o: ["Um programa de internet", "Um endereço exclusivo de identificação de um dispositivo na rede", "Um antivírus", "Um plug USB"], c: "Um endereço exclusivo de identificação de um dispositivo na rede" },
+      { q: "O que é o Canva?", o: ["Um antivírus", "Um programa de planilhas", "Uma plataforma de design gráfico online", "Um sistema de edição de vídeo"], c: "Uma plataforma de design gráfico online" },
+      { q: "Qual dessas funcionalidades o Canva oferece?", o: ["Programação em Java", "Criação de gráficos, posts e apresentações", "Controle de estoque", "Digitalização de documentos"], c: "Criação de gráficos, posts e apresentações" },
+      { q: "É possível trabalhar em equipe no Canva?", o: ["Não", "Sim, em tempo real", "Somente com conta paga", "Apenas offline"], c: "Sim, em tempo real" },
+      { q: "Qual desses formatos pode ser exportado no Canva?", o: [".zip", ".avi", ".jpg", ".exe"], c: ".jpg" },
+      { q: "O Canva possui banco de imagens e elementos?", o: ["Não, é só para editar texto", "Sim, com opções gratuitas e pagas", "Apenas imagens pagas", "Somente com plano Pro"], c: "Sim, com opções gratuitas e pagas" },
+      { q: "O que é Inteligência Artificial?", o: ["Um sistema de senhas", "A capacidade de máquinas simular comportamentos humanos", "Um software para jogos", "Um antivírus"], c: "A capacidade de máquinas simular comportamentos humanos" },
+      { q: "Qual destas é uma aplicação comum da IA?", o: ["Impressora 3D", "Planilha de Excel", "Assistentes virtuais (como Alexa ou Siri)", "Scanner de fotos"], c: "Assistentes virtuais (como Alexa ou Siri)" },
+      { q: "O ChatGPT é um exemplo de:", o: ["Sistema operacional", "Processador de vídeo", "Inteligência Artificial de linguagem natural", "Aplicativo de música"], c: "Inteligência Artificial de linguagem natural" },
+      { q: "A IA precisa ser treinada com:", o: ["Hardware físico", "Dados", "Filtros de internet", "Códigos de barra"], c: "Dados" },
+      { q: "A inteligência artificial pode aprender com o tempo?", o: ["Não, ela é fixa", "Sim, através de machine learning (aprendizado de máquina)", "Apenas com comandos manuais", "Somente se conectada ao Wi-Fi"], c: "Sim, através de machine learning (aprendizado de máquina)" }
     ];
 
     function renderizarPerguntas() {
@@ -141,7 +141,35 @@
       });
       const submitBtn = document.createElement("button");
       submitBtn.textContent = "Finalizar Quiz";
+      submitBtn.type = "button";
+      submitBtn.addEventListener("click", gerarPdfResultado);
       quizForm.appendChild(submitBtn);
+    }
+
+    function gerarPdfResultado() {
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      let acertos = 0;
+
+      perguntas.forEach((pergunta, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === pergunta.c) {
+          acertos++;
+        }
+      });
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.text(`Resultado do Quiz - Lions Clube`, 20, 20);
+      doc.setFontSize(12);
+      doc.text(`Nome: ${nome}`, 20, 30);
+      doc.text(`Email: ${email}`, 20, 40);
+      doc.text(`Total de questões: ${perguntas.length}`, 20, 50);
+      doc.text(`Acertos: ${acertos}`, 20, 60);
+      doc.text(`Data: ${new Date().toLocaleDateString()}`, 20, 70);
+
+      doc.save(`quiz_resultado_${nome.replace(/\s+/g, '_')}.pdf`);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
